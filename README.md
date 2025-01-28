@@ -12,3 +12,8 @@
   Dependencias y instalaciones:
 
   - vite, tailwind, daisyui, react-router-dom, react-redux, redux, @reduxjs/toolkit, axios, daisyui
+
+## Documentation
+
+- [React Router - Index Routes](https://reactrouter.com/start/library/routing#index-routes)
+- [SWAPI - The Star Wars API](https://swapi.dev/)
