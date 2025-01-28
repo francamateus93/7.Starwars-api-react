@@ -1,12 +1,15 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import StarshipsPage from "./pages/StarshipsPage";
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <p className="text-2xl text-slate-500">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<StarshipsPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
