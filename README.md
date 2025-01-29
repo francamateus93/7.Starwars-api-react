@@ -17,3 +17,5 @@
 
 - [React Router - Index Routes](https://reactrouter.com/start/library/routing#index-routes)
 - [SWAPI - The Star Wars API](https://swapi.dev/)
+- [Implementando Redux Toolkit en React](https://medium.com/@diego.coder/implementando-redux-en-react-js-redux-toolkit-86b82219584a)
+- [Project Structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md)
