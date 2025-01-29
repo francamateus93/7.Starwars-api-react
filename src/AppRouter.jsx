@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/starships" element={<StarshipsPage />} />
-        <Route path="/starship/:id" element={<ShipDetails />} />
+        <Route path="/starships/:id" element={<ShipDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

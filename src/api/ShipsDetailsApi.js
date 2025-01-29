@@ -1,13 +1,13 @@
 import swapi from "./Swapi";
 
-const fetchShipsDetails = async (id) => {
+const fetchShipDetails = async (id) => {
   try {
-    const response = await swapi.get(`/starships/${id}`);
+    const response = await swapi.get(`/starships/${id}/`);
     return response.data;
   } catch (error) {
-    console.log("Error: ", error);
+    console.error("Error: ", error);
     throw error;
   }
 };
 
-export default fetchShipsDetails;
+export default fetchShipDetails;
