@@ -15,7 +15,7 @@ const ShipDetails = () => {
         const data = await fetchShipDetails(id);
         setShip(data);
       } catch (error) {
-        console.error("Erro ao carregar os detalhes da nave:", error);
+        console.error("Error: ", error);
       } finally {
         setLoading(false);
       }

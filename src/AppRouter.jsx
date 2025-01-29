@@ -1,8 +1,8 @@
 import React from "react";
-import NotFound from "./pages/NotFound";
-import HomePage from "./pages/HomePage";
-import ShipDetails from "./pages/ShipDetails";
-import StarshipsPage from "./pages/StarshipsPage";
+import NotFound from "./views/NotFound";
+import HomePage from "./views/HomePage";
+import ShipDetails from "./views/ShipDetails";
+import StarshipsPage from "./views/StarshipsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
