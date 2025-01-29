@@ -2,28 +2,29 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import fetchShipDetails from "../api/ShipsDetailsApi";
 
-function ShipDetails() {
+const ShipDetails = () => {
   const { id } = useParams();
   const [ship, setShip] = useState();
   const [loading, setLoading] = useState(true);
 
-  console.log("ID recibido en la URL:", id);
+  console.log(id);
 
   useEffect(() => {
-    const gettingShipDetails = async () => {
+    const getShipDetails = async () => {
       try {
         const data = await fetchShipDetails(id);
         setShip(data);
       } catch (error) {
-        console.error("Error: ", error);
+        console.error("Erro ao carregar os detalhes da nave:", error);
       } finally {
         setLoading(false);
       }
     };
-    gettingShipDetails();
+
+    getShipDetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Carregando detalhes da nave...</p>;
 
   return (
     <div className="flex gap-8 items-center justify-center h-screen">
@@ -36,6 +37,6 @@ function ShipDetails() {
       <p>Crew: {ship.crew}</p>
     </div>
   );
-}
+};
 
 export default ShipDetails;

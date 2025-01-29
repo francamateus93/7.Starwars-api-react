@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fetchShips from "../api/ShipsApi";
 import ShipCard from "../components/ShipCard";
+import { Link } from "react-router-dom";
 
 function StarshipsPage() {
   const [ships, setShips] = useState([]);
@@ -24,9 +25,11 @@ function StarshipsPage() {
   if (loading) return <p>Loading...</p>;
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {ships.map((ship) => (
-          <ShipCard key={ship.name} name={ship.name} model={ship.model} />
+          <Link to={`/starships/${ship.url.split("/")[5]}`}>
+            <ShipCard key={ship.name} name={ship.name} model={ship.model} />
+          </Link>
         ))}
       </div>
     </div>
