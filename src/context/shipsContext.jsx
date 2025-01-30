@@ -29,4 +29,7 @@ export const ShipsProvider = ({ children }) => {
   );
 };
 
-export default useShips = () => useContext(ShipsContext);
+export const useShips = () => {
+  const context = useContext(ShipsContext);
+  return context;
+};
