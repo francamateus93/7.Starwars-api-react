@@ -4,9 +4,8 @@ import ShipCard from "../components/ShipCard";
 import { Link } from "react-router-dom";
 
 function StarshipsPage() {
-  const { ships, loading } = useShips();
+  const { ships, loading, setPage, viewMore } = useShips();
 
-  if (loading) return <p>Loading...</p>;
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
       <div className="grid grid-cols-1 gap-4 mx-auto">
@@ -16,6 +15,19 @@ function StarshipsPage() {
           </Link>
         ))}
       </div>
+      {viewMore && (
+        <button
+          onClick={() => setPage((prev) => prev + 1)}
+          className="my-4 uppercase text-center text-neutral-300 font-medium hover:text-white transition"
+        >
+          View More
+        </button>
+      )}
+      {loading && (
+        <p className="text-white font-medium uppercase text-center">
+          Loading...
+        </p>
+      )}
     </div>
   );
 }

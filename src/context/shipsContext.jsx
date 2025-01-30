@@ -6,12 +6,16 @@ const ShipsContext = createContext();
 export const ShipsProvider = ({ children }) => {
   const [ships, setShips] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [viewMore, setViewMore] = useState(true);
 
   useEffect(() => {
     const gettingShips = async () => {
       try {
-        const data = await fetchShips(1);
-        setShips(data);
+        setLoading(true);
+        const data = await fetchShips(page);
+        setShips((prev) => [...prev, ...data]); // Agrega las naves a la lista
+        setViewMore(data.next !== null); // data.next verifica si hay más naves
       } catch (error) {
         console.error("Error fetching ships:", error);
       } finally {
@@ -20,10 +24,10 @@ export const ShipsProvider = ({ children }) => {
     };
 
     gettingShips();
-  }, []);
+  }, [page]);
 
   return (
-    <ShipsContext.Provider value={{ ships, loading }}>
+    <ShipsContext.Provider value={{ ships, loading, setPage, viewMore }}>
       {children}
     </ShipsContext.Provider>
   );

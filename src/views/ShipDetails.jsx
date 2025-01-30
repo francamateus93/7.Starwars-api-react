@@ -67,7 +67,7 @@ const ShipDetails = () => {
             ever since the 1500s.
           </p>
           <div className="flex gap-4">
-            <div className="flex flex-col gap-2 font-medium">
+            <div className="flex flex-col gap-2 font-bold">
               <p>
                 Model: <p className="font-normal">{ship.model}</p>
               </p>
@@ -79,7 +79,7 @@ const ShipDetails = () => {
                 <p className="font-normal">{ship.cost_in_credits}</p>
               </p>
             </div>
-            <div className="flex flex-col gap-2 font-medium">
+            <div className="flex flex-col gap-2 font-bold">
               <p>
                 Length: <p className="font-normal">{ship.length}</p>
               </p>
