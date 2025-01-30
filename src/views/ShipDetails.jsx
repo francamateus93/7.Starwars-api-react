@@ -45,7 +45,7 @@ const ShipDetails = () => {
 
   return (
     <div className="bg-black text-white min-h-screen flex flex-col gap-4 items-center p-6">
-      <div className="border-y w-full mb-4 p-4">
+      <div className="border-y border-y-white/25 w-full mb-4 p-4">
         <h1 className="text-3xl text-start tracking-tight font-bold uppercase">
           Starships
         </h1>
