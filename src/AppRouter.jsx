@@ -1,6 +1,7 @@
 import React from "react";
 import NotFound from "./views/NotFound";
 import HomePage from "./views/HomePage";
+import Navbar from "./components/Navbar";
 import ShipDetails from "./views/ShipDetails";
 import StarshipsPage from "./views/StarshipsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/starships" element={<StarshipsPage />} />
