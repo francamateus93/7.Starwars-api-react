@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        noto: ["Noto Sans Mono", "sans-serif"],
+      },
+    },
+    plugins: [require("daisyui")],
   },
-  plugins: [require("daisyui")],
 };
