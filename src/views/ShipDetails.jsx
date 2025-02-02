@@ -10,7 +10,7 @@ const ShipDetails = () => {
   const [loading, setLoading] = useState(true);
   const shipImage = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     const getShipDetails = async () => {
