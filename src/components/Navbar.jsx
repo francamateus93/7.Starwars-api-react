@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthModal from "./AuthModal";
 import Logo from "../assets/logo_stacked_2x-52b4f6d33087.png";
+import IconImg from "../../public/Starwars-Darth-Vader.png";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 function Navbar() {
   const { user, logout } = useAuth();
-  const [modalType, setModalType] = useState(false);
+  const [modalType, setModalType] = useState(null);
 
   return (
     <section className="bg-black">
@@ -56,33 +57,41 @@ function Navbar() {
         {/* AUTH */}
         <div className="flex items-center gap-2">
           {user ? (
-            <>
-              <span className="text-gray-300">
-                Welcome, {user.displayName || user.email}
-              </span>
+            <div className="flex items-center gap-4">
+              <img
+                src={IconImg}
+                alt="Icon Star Wars"
+                className="w-6 cursor-pointer"
+              />
               <button
                 onClick={logout}
-                className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+                className="cursor-pointer tracking-tighter text-white uppercase hover:text-yellow-400 transition"
               >
-                Logout
+                Log out
               </button>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="flex items-center gap-2">
               <button
-                onClick={() => setModalType("login")}
-                className="uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
+                onClick={() => {
+                  // console.log("Opening login modal");
+                  setModalType("login");
+                }}
+                className="cursor-pointer uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
               >
                 Log In
               </button>
               <span className="text-sm text-gray-600">//</span>
               <button
-                onClick={() => setModalType("signup")}
-                className="uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
+                onClick={() => {
+                  // console.log("Opening signup modal");
+                  setModalType("signup");
+                }}
+                className="cursor-pointer uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
               >
                 Sign Up
               </button>
-            </>
+            </div>
           )}
         </div>
       </div>
