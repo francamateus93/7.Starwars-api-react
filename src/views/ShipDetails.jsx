@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 import fetchShipDetails from "../api/ShipsDetailsApi";
 import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
 
@@ -31,33 +32,30 @@ const ShipDetails = () => {
   if (!ship)
     return (
       <div className="flex flex-col items-center justify-center p-8">
-        <p className="text-3xl font-semibold uppercase tracking-tight text-white">
+        <p className="text-6xl font-bold mb-6 text-white tracking-tight">
           Ship not found
         </p>
-        <Link
-          to="/starships"
-          className="px-8 py-2 shadow-lg mt-4 text-center rounded-lg text-white bg-yellow-600 hover:text-white hover:bg-yellow-700 transition"
-        >
-          Back to Home
+        <Link to="/starships">
+          <Button>Back to StarShips</Button>
         </Link>
       </div>
     );
 
   return (
-    <div className="text-white min-h-screen flex flex-col gap-4 items-center p-6">
-      <div className="border-y border-y-white/25 w-full mb-4 p-4">
+    <div className="text-white min-h-screen flex flex-col gap-4 items-center p-10">
+      <div className="border-y border-y-white/25 w-full mb-8 px-8 py-5">
         <h1 className="text-3xl text-start tracking-tight font-medium uppercase">
           Starships
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row gap-8 items-center">
+      <div className="flex flex-col md:flex-row gap-16 items-center">
         <img
           src={shipImage}
           alt={ship.name}
-          className="w-96 h-auto rounded-lg shadow-lg"
+          className="w-2xl md:w-96 h-auto rounded-lg shadow-lg"
           onError={(e) => (e.target.src = errorImage)}
         />
-        <div className="bg-neutral-900 p-6 tracking-tight rounded w-full max-w-lg text-gray-400">
+        <div className="bg-neutral-900/75 p-10 tracking-tight rounded-xl w-full max-w-2xl text-gray-400">
           <h1 className="text-3xl font-semibold uppercase pb-2 mb-4">
             {ship.name}
           </h1>

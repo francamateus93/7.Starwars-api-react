@@ -14,7 +14,7 @@ export const ShipsProvider = ({ children }) => {
       try {
         setLoading(true);
         const data = await fetchShips(page);
-        setShips((prev) => [...prev, ...data]); // Agrega las naves a la lista
+        setShips((prev) => [...prev, ...data]);
         setViewMore(data.next !== null); // data.next verifica si hay más naves
       } catch (error) {
         console.error("Error fetching ships:", error);

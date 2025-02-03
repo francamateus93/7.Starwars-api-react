@@ -11,6 +11,7 @@ function Navbar() {
             href="https://www.instagram.com/starwars/"
             target="_blank"
             rel="noopener noreferrer"
+            alt="Instagram"
           >
             <Instagram className="w-6 h-6 text-neutral-300 hover:text-white transition" />
           </a>
@@ -18,6 +19,7 @@ function Navbar() {
             href="https://x.com/starwars?mx=2"
             target="_blank"
             rel="noopener noreferrer"
+            alt="Twitter"
           >
             <Twitter className="w-6 h-6 text-neutral-300 hover:text-white transition" />
           </a>
@@ -25,6 +27,7 @@ function Navbar() {
             href="https://www.facebook.com/starwars.es/?brand_redir=169299103121699#"
             target="_blank"
             rel="noopener noreferrer"
+            alt="Facebook"
           >
             <Facebook className="w-6 h-6 text-neutral-300 hover:text-white transition" />
           </a>
@@ -32,6 +35,7 @@ function Navbar() {
             href="https://www.youtube.com/user/starwars"
             target="_blank"
             rel="noopener noreferrer"
+            alt="Youtube"
           >
             <Youtube className="w-6 h-6 text-neutral-300 hover:text-white transition" />
           </a>

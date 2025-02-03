@@ -6,7 +6,7 @@ function NotFound() {
   return (
     <div className="flex gap-8 items-center justify-center h-screen">
       <div className="flex flex-col p-4 mr-8 text-center">
-        <h1 className="text-6xl font-bold mb-6 text-white">
+        <h1 className="text-6xl font-bold mb-6 text-white tracking-tight">
           404 - Page Not Found
         </h1>
         <p className="text-xl mb-4">
