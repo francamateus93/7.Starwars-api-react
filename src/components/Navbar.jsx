@@ -1,8 +1,14 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import AuthModal from "./AuthModal";
 import Logo from "../assets/logo_stacked_2x-52b4f6d33087.png";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 function Navbar() {
+  const { user, logout } = useAuth();
+  const [modalType, setModalType] = useState(false);
+
   return (
     <section className="bg-black">
       <div className="flex items-center justify-between p-4 mx-6">
@@ -41,20 +47,50 @@ function Navbar() {
           </a>
         </div>
         <div className="flex-1 flex justify-center">
+          {/* LOGO */}
           <Link to="/">
             <img src={Logo} alt="Logo StarWars" className="w-52 p-2" />
           </Link>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="uppercase text-neutral-200 focus:text-white hover:text-white duration-100">
-            Log In
-          </button>
-          <p className="text-neutral-500">//</p>
-          <button className="uppercase text-neutral-200 focus:text-white hover:text-white duration-100">
-            Sign Up
-          </button>
+
+        {/* AUTH */}
+        <div className="flex items-center gap-2">
+          {user ? (
+            <>
+              <span className="text-gray-300">
+                Welcome, {user.displayName || user.email}
+              </span>
+              <button
+                onClick={logout}
+                className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => setModalType("login")}
+                className="uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
+              >
+                Log In
+              </button>
+              <span className="text-sm text-gray-600">//</span>
+              <button
+                onClick={() => setModalType("signup")}
+                className="uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
       </div>
+      {modalType && (
+        <AuthModal type={modalType} onClose={() => setModalType(null)} />
+      )}
+
+      {/* NAVIGATION */}
       <div className="border-y-1 border-y-white/10 flex items-center justify-center mb-4">
         <Link
           to="/"
@@ -64,7 +100,7 @@ function Navbar() {
         </Link>
         <Link
           to="/starships"
-          className="font-medium text-lg tracking-tight uppercase p-4 px-8 transition text-neutral-400 focus:text-white hover:text-white duration-100 focus:border-b-2 focus:border-b-yellow-400 focus:border-b-shadow"
+          className="font-medium text-lg tracking-tight uppercase p-4 px-8 transition text-neutral-400 focus:text-white hover:text-white duration-100 focus:border-b-2 focus:border-b-yellow-400"
         >
           Starships
         </Link>

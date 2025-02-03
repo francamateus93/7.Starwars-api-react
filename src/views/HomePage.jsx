@@ -54,7 +54,9 @@ function HomePage() {
         >
           <div className="absolute inset-0 bg-black/40 bg-opacity-50 flex flex-col justify-center items-start text-white text-start py-6 px-24">
             <div className="">
-              <h1 className="text-5xl md:text-7xl font-bold">{image.title}</h1>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
+                {image.title}
+              </h1>
               <p className="mt-2 md:mt-4 text-lg md:text-2xl tracking-tight">
                 {image.text}
               </p>
