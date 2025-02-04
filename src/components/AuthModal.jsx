@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import Button from "./Button";
 import IconImg from "../../public/Starwars-Darth-Vader.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthModal = ({ type, onClose, user }) => {
   const { login, signup } = useAuth();
@@ -9,11 +10,15 @@ const AuthModal = ({ type, onClose, user }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     if (user) {
       onClose();
+      navigate(location.state?.from?.pathname || "/"), { replace: true };
     }
-  }, [user, onClose]);
+  }, [user, onClose, location, navigate]);
 
   const handleModal = async (e) => {
     e.preventDefault();
