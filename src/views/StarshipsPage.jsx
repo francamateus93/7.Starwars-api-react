@@ -3,7 +3,7 @@ import { useShips } from "../context/shipsContext";
 import ShipCard from "../components/ShipCard";
 import { Link } from "react-router-dom";
 
-function StarshipsPage() {
+const StarshipsPage = () => {
   const { ships, loading, setPage, viewMore } = useShips();
 
   return (
@@ -30,6 +30,6 @@ function StarshipsPage() {
       )}
     </div>
   );
-}
+};
 
 export default StarshipsPage;

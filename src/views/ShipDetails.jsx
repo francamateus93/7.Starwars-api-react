@@ -48,14 +48,14 @@ const ShipDetails = () => {
           Starships
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row gap-16 items-center">
+      <div className="flex flex-col md:flex-row gap-10 items-center">
         <img
           src={shipImage}
           alt={ship.name}
           className="w-2xl md:w-96 h-auto rounded-lg shadow-lg"
           onError={(e) => (e.target.src = errorImage)}
         />
-        <div className="bg-neutral-900/75 p-10 tracking-tight rounded-xl w-full max-w-2xl text-gray-400">
+        <div className="bg-neutral-900/80 p-10 tracking-tight rounded-xl w-full max-w-2xl text-gray-200">
           <h1 className="text-3xl font-semibold uppercase pb-2 mb-4">
             {ship.name}
           </h1>
@@ -91,7 +91,13 @@ const ShipDetails = () => {
             </div>
           </div>
         </div>
+        <div></div>
       </div>
+      <Link to="/starships">
+        <button className="cursor-pointer md:mt-4 uppercase text-center text-neutral-300 font-medium hover:text-white transition">
+          Back to Starships
+        </button>
+      </Link>
     </div>
   );
 };

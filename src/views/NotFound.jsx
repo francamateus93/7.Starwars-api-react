@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 
-function NotFound() {
+const NotFound = () => {
   return (
     <div className="flex gap-8 items-center justify-center h-screen">
       <div className="flex flex-col p-4 mr-8 text-center">
@@ -18,6 +18,6 @@ function NotFound() {
       </div>
     </div>
   );
-}
+};
 
 export default NotFound;

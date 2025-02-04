@@ -27,7 +27,7 @@ const images = [
   },
 ];
 
-function HomePage() {
+const HomePage = () => {
   const [Slide, setSlide] = useState(0);
 
   const prevSlide = () => {
@@ -83,6 +83,6 @@ function HomePage() {
       </button>
     </div>
   );
-}
+};
 
 export default HomePage;
