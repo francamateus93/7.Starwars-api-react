@@ -20,7 +20,7 @@ const authReducer = (state, action) => {
     case "logout":
       return {
         ...state,
-        user: anull,
+        user: null,
         loading: false,
       };
     case "setUser":
@@ -42,7 +42,7 @@ const authReducer = (state, action) => {
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, dispatch] = useReducer(authReducer, initialState);
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -54,25 +54,28 @@ export const AuthProvider = ({ children }) => {
 
   // AUTHENTICATION LOGIC
   const login = async (email, password) => {
-    dispatch({ type: "loadingloading" });
+    dispatch({ type: "loading" });
     const response = await AuthService.login(email, password);
     dispatch({ type: "login", payload: response.user });
+    navigate("/starships");
   };
 
   const signup = async (email, password) => {
     dispatch({ type: "loading" });
     const response = await AuthService.signup(email, password);
     dispatch({ type: "login", payload: response.user });
+    navigate("/starships");
   };
 
   const logout = async () => {
     await AuthService.logout();
     dispatch({ type: "logout" });
+    navigate("/");
   };
 
   return (
     <AuthContext.Provider
-      value={{ user: user.state, login, signup, logout, loading: user.state }}
+      value={{ user: state.user, login, signup, logout, loading: state.state }}
     >
       {children}
     </AuthContext.Provider>

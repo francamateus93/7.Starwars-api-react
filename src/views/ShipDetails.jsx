@@ -4,10 +4,12 @@ import Button from "../components/buttons/SecondaryButton";
 import fetchShipDetails from "../api/ShipsDetailsApi";
 import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
 import PrimaryButton from "../components/buttons/PrimaryButton";
+import Pilots from "../components/Pilots";
+import Films from "../components/Films";
 
 const ShipDetails = () => {
   const { id } = useParams();
-  const [ship, setShip] = useState();
+  const [ship, setShip] = useState(null);
   const [loading, setLoading] = useState(true);
   const shipImage = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
@@ -42,7 +44,7 @@ const ShipDetails = () => {
     );
 
   return (
-    <div className="text-white min-h-screen flex flex-col gap-4 items-center p-10">
+    <div className="text-white min-h-screen flex flex-col gap-2 items-center p-10">
       <div className="border-y border-y-white/25 w-full mb-8 px-8 py-5">
         <h1 className="text-3xl text-start tracking-tight font-medium uppercase">
           Starships
@@ -67,33 +69,38 @@ const ShipDetails = () => {
           <div className="flex gap-4">
             <div className="flex flex-col gap-2 font-bold">
               <p>
-                Model: <p className="font-normal">{ship.model}</p>
+                Model: <span className="font-normal">{ship.model}</span>
               </p>
               <p>
-                Manufacturer: <p className="font-normal">{ship.manufacturer}</p>
+                Manufacturer:{" "}
+                <span className="font-normal">{ship.manufacturer}</span>
               </p>
               <p>
                 Cost in credits:{" "}
-                <p className="font-normal">{ship.cost_in_credits}</p>
+                <span className="font-normal">{ship.cost_in_credits}</span>
               </p>
             </div>
             <div className="flex flex-col gap-2 font-bold">
               <p>
-                Length: <p className="font-normal">{ship.length}</p>
+                Length: <span className="font-normal">{ship.length}</span>
               </p>
               <p>
                 Atmospheric Speed:{" "}
-                <p className="font-normal">{ship.max_atmosphering_speed}</p>
+                <span className="font-normal">
+                  {ship.max_atmosphering_speed}
+                </span>
               </p>
               <p>
-                Crew: <p className="font-normal">{ship.crew}</p>
+                Crew: <span className="font-normal">{ship.crew}</span>
               </p>
             </div>
           </div>
         </div>
         <div></div>
       </div>
-      <Link to="/starships">
+      <Pilots pilotsUrl={ship.pilots} />
+      <Films filmsUrl={ship.films} />
+      <Link to="/starships" className="md:mt-8">
         <PrimaryButton>Back to Starships</PrimaryButton>
       </Link>
     </div>

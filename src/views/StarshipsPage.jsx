@@ -8,7 +8,7 @@ const StarshipsPage = () => {
   const { ships, loading, setPage, viewMore } = useShips();
 
   return (
-    <div className="grid grid-cols-1 gap-4 p-4">
+    <div className="grid grid-cols-1 gap-8 p-4 mb-8">
       <div className="grid grid-cols-1 gap-4 mx-auto">
         {ships.map((ship) => (
           <Link to={`/starships/${ship.url.split("/")[5]}`}>

@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <section className="bg-black">
-      <div className="flex items-center justify-between p-4 mx-6">
+      <div className="flex items-center justify-between gap-2 p-4 mx-6">
         <div className="hidden md:flex md:items-center md:gap-4">
           <a
             href="https://www.instagram.com/starwars/"
@@ -52,7 +52,7 @@ const Navbar = () => {
         <div className="flex-1 flex justify-center">
           {/* LOGO */}
           <Link to="/">
-            <img src={Logo} alt="Logo StarWars" className="w-52 p-2" />
+            <img src={Logo} alt="Logo StarWars" className="w-40 md:w-52 p-2" />
           </Link>
         </div>
 

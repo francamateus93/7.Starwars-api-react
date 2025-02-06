@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Authentication/AuthContext";
 import Button from "./buttons/SecondaryButton";
 import IconImg from "../../public/Starwars-Darth-Vader.png";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthModal = ({ type, onClose, user, onToggle }) => {
   const { login, signup } = useAuth();
@@ -83,7 +83,7 @@ const AuthModal = ({ type, onClose, user, onToggle }) => {
                 setError(null);
                 onToggle();
               }}
-              className="text-yellow-400 ml-1"
+              className="text-yellow-400 ml-1 cursor-pointer"
             >
               {type === "login" ? "Sign Up" : "Log In"}
             </button>
