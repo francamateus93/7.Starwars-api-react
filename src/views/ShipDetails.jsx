@@ -4,8 +4,8 @@ import Button from "../components/buttons/SecondaryButton";
 import fetchShipDetails from "../api/ShipsDetailsApi";
 import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import Pilots from "../components/Pilots";
-import Films from "../components/Films";
+import Pilots from "../components/ship-details/Pilots";
+import Films from "../components/ship-details/Films";
 
 const ShipDetails = () => {
   const { id } = useParams();
@@ -13,15 +13,13 @@ const ShipDetails = () => {
   const [loading, setLoading] = useState(true);
   const shipImage = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
-  // console.log(id);
-
   useEffect(() => {
     const getShipDetails = async () => {
       try {
         const data = await fetchShipDetails(id);
-        setShip(data);
+        setShip((prevShip) => ({ ...prevShip, ...data }));
       } catch (error) {
-        console.error("Error: ", error);
+        console.error("Error fetching ship details:", error);
       } finally {
         setLoading(false);
       }
@@ -31,17 +29,19 @@ const ShipDetails = () => {
   }, [id]);
 
   if (loading) return <p>Loading details...</p>;
-  if (!ship)
+
+  if (!ship) {
     return (
       <div className="flex flex-col items-center justify-center p-8">
         <p className="text-6xl font-bold mb-6 text-white tracking-tight">
           Ship not found
         </p>
         <Link to="/starships">
-          <Button>Back to StarShips</Button>
+          <Button>Back to Starships</Button>
         </Link>
       </div>
     );
+  }
 
   return (
     <div className="text-white min-h-screen flex flex-col gap-2 items-center p-10">
@@ -50,7 +50,7 @@ const ShipDetails = () => {
           Starships
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row gap-10 items-center">
+      <div className="flex flex-col md:flex-row gap-10 items-center pt-10 pb-20">
         <img
           src={shipImage}
           alt={ship.name}
@@ -61,7 +61,7 @@ const ShipDetails = () => {
           <h1 className="text-3xl font-semibold uppercase pb-2 mb-4">
             {ship.name}
           </h1>
-          <p className=" mb-6">
+          <p className="mb-6">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s.
@@ -96,10 +96,17 @@ const ShipDetails = () => {
             </div>
           </div>
         </div>
-        <div></div>
       </div>
-      <Pilots pilotsUrl={ship.pilots} />
-      <Films filmsUrl={ship.films} />
+      {ship.pilots && ship.pilots.length > 0 ? (
+        <Pilots pilotsUrl={ship.pilots} />
+      ) : (
+        ""
+      )}
+      {ship.films && ship.films.length > 0 ? (
+        <Films filmsUrl={ship.films} />
+      ) : (
+        ""
+      )}
       <Link to="/starships" className="md:mt-8">
         <PrimaryButton>Back to Starships</PrimaryButton>
       </Link>
