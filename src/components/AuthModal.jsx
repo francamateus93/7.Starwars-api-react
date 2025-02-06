@@ -4,7 +4,7 @@ import Button from "./buttons/SecondaryButton";
 import IconImg from "../../public/Starwars-Darth-Vader.png";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const AuthModal = ({ type, onClose, user }) => {
+const AuthModal = ({ type, onClose, user, onToggle }) => {
   const { login, signup } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +36,7 @@ const AuthModal = ({ type, onClose, user }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
-      <div className="bg-neutral-900 text-white p-10 rounded-lg w-96 h-88 shadow-2xl relative flex flex-col justify-center">
+      <div className="bg-neutral-900 text-white p-10 rounded-lg w-96 h-96 shadow-2xl relative flex flex-col justify-center">
         <button
           className="absolute top-2 right-2 p-2 text-white"
           onClick={onClose}
@@ -72,6 +72,22 @@ const AuthModal = ({ type, onClose, user }) => {
             />
             <Button>{type === "login" ? "Log In" : "Sign Up"}</Button>
           </form>
+        </div>
+        <div>
+          <p className="text-white text-sm text-center m-5">
+            {type === "login"
+              ? "Don't have an account?"
+              : "Already have an account?"}
+            <button
+              onClick={() => {
+                setError(null);
+                onToggle();
+              }}
+              className="text-yellow-400 ml-1"
+            >
+              {type === "login" ? "Sign Up" : "Log In"}
+            </button>
+          </p>
         </div>
       </div>
     </div>

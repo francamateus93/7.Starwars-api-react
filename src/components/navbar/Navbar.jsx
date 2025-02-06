@@ -96,7 +96,13 @@ const Navbar = () => {
         </div>
       </div>
       {modalType && (
-        <AuthModal type={modalType} onClose={() => setModalType(null)} />
+        <AuthModal
+          type={modalType}
+          onClose={() => setModalType(null)}
+          onToggle={() =>
+            setModalType(modalType === "login" ? "signup" : "login")
+          }
+        />
       )}
 
       {/* NAVIGATION */}
