@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import AuthModal from "../AuthModal";
+import PrimaryButton from "../buttons/PrimaryButton";
 import Logo from "/src/assets/logo_stacked_2x-52b4f6d33087.png";
 import IconImg from "/public/Starwars-Darth-Vader.png";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
@@ -73,25 +74,23 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <button
+              <PrimaryButton
                 onClick={() => {
                   // console.log("Opening login modal");
                   setModalType("login");
                 }}
-                className="cursor-pointer uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
               >
                 Log In
-              </button>
+              </PrimaryButton>
               <span className="text-sm text-gray-600">//</span>
-              <button
+              <PrimaryButton
                 onClick={() => {
                   // console.log("Opening signup modal");
                   setModalType("signup");
                 }}
-                className="cursor-pointer uppercase text-gray-300 hover:text-white hover:font-medium transition duration-200"
               >
                 Sign Up
-              </button>
+              </PrimaryButton>
             </div>
           )}
         </div>

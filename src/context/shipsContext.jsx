@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import fetchShips from "../api/ShipsApi";
 
 const ShipsContext = createContext();
@@ -34,6 +34,5 @@ export const ShipsProvider = ({ children }) => {
 };
 
 export const useShips = () => {
-  const context = useContext(ShipsContext);
-  return context;
+  return useContext(ShipsContext);
 };

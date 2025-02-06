@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
+import SecondaryButton from "../components/buttons/SecondaryButton";
 import heroBehindTheDesign from "../assets/skeleton-crew-behind-the-design-hero-desktop_8e06b32e.jpeg";
 import heroCharacter from "../assets/skeleton-crew-bff-woman-desktop_6308b91e.jpeg";
 import heroCrew from "../assets/skeleton-crew-directed-by-skeleton-crew-desktop_8f3fed22.jpeg";
@@ -61,7 +60,7 @@ const HomePage = () => {
                 {image.text}
               </p>
               <Link to="/starships">
-                <Button>Find out</Button>
+                <SecondaryButton>Find out</SecondaryButton>
               </Link>
             </div>
           </div>

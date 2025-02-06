@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import SecondaryButton from "../components/buttons/SecondaryButton";
 
 const NotFound = () => {
   return (
@@ -13,7 +13,7 @@ const NotFound = () => {
           It appears that the page you are looking for does not exist.
         </p>
         <Link to="/">
-          <Button>Back to Home</Button>
+          <SecondaryButton>Back to Home</SecondaryButton>
         </Link>
       </div>
     </div>

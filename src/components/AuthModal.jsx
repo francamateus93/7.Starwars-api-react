@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import Button from "./Button";
+import Button from "./buttons/SecondaryButton";
 import IconImg from "../../public/Starwars-Darth-Vader.png";
 import { useLocation, useNavigate } from "react-router-dom";
 

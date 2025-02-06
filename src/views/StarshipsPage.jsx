@@ -2,6 +2,7 @@ import React from "react";
 import { useShips } from "../context/shipsContext";
 import ShipCard from "../components/ShipCard";
 import { Link } from "react-router-dom";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 const StarshipsPage = () => {
   const { ships, loading, setPage, viewMore } = useShips();
@@ -16,12 +17,9 @@ const StarshipsPage = () => {
         ))}
       </div>
       {viewMore && (
-        <button
-          onClick={() => setPage((prev) => prev + 1)}
-          className="my-4 uppercase text-center text-neutral-300 font-medium hover:text-white transition"
-        >
+        <PrimaryButton onClick={() => setPage((prev) => prev + 1)}>
           View More
-        </button>
+        </PrimaryButton>
       )}
       {loading && (
         <p className="text-white font-medium uppercase text-center">

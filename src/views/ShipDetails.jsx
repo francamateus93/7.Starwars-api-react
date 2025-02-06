@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Button from "../components/Button";
+import { Link, useParams } from "react-router-dom";
+import Button from "../components/buttons/SecondaryButton";
 import fetchShipDetails from "../api/ShipsDetailsApi";
 import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 const ShipDetails = () => {
   const { id } = useParams();
@@ -94,9 +94,7 @@ const ShipDetails = () => {
         <div></div>
       </div>
       <Link to="/starships">
-        <button className="cursor-pointer md:mt-4 uppercase text-center text-neutral-300 font-medium hover:text-white transition">
-          Back to Starships
-        </button>
+        <PrimaryButton>Back to Starships</PrimaryButton>
       </Link>
     </div>
   );
