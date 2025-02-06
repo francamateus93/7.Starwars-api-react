@@ -6,7 +6,7 @@ import ShipDetails from "./views/ShipDetails";
 import StarshipsPage from "./views/StarshipsPage";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute";
 import AuthModal from "./components/AuthModal";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "./context/Authentication/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {

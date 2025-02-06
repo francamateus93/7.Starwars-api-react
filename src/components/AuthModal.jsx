@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/Authentication/AuthContext";
 import Button from "./buttons/SecondaryButton";
 import IconImg from "../../public/Starwars-Darth-Vader.png";
 import { useLocation, useNavigate } from "react-router-dom";

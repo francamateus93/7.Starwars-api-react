@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/Authentication/AuthContext";
 import AuthModal from "../AuthModal";
 import PrimaryButton from "../buttons/PrimaryButton";
 import Logo from "/src/assets/logo_stacked_2x-52b4f6d33087.png";

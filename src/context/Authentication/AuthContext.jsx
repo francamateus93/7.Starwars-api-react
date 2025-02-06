@@ -1,17 +1,14 @@
-import { auth } from "../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { createContext, useContext, useEffect, useReducer } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { AuthService } from "./authService";
 
 const initialState = {
   user: null,
   loading: true,
 };
 
+// AUTHENTICATION REDUCER
 const authReducer = (state, action) => {
   switch (action.type) {
     case "login":
@@ -55,25 +52,21 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  // AUTHENTICATION LOGIC
   const login = async (email, password) => {
-    dispatch({ type: "loading" });
-    const response = await signInWithEmailAndPassword(auth, email, password);
+    dispatch({ type: "loadingloading" });
+    const response = await AuthService.login(email, password);
     dispatch({ type: "login", payload: response.user });
   };
 
   const signup = async (email, password) => {
     dispatch({ type: "loading" });
-    const response = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const response = await AuthService.signup(email, password);
     dispatch({ type: "login", payload: response.user });
   };
 
   const logout = async () => {
-    dispatch({ type: "loading" });
-    await signOut(auth);
+    await AuthService.logout();
     dispatch({ type: "logout" });
   };
 
