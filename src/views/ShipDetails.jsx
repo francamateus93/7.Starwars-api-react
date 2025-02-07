@@ -46,18 +46,18 @@ const ShipDetails = () => {
   return (
     <div className="text-white min-h-screen flex flex-col gap-2 items-center p-10">
       <div className="border-y border-y-white/25 w-full mb-8 px-8 py-5">
-        <h1 className="text-3xl text-start tracking-tight font-medium uppercase">
+        <h1 className="text-3xl text-center md:text-start tracking-tight font-medium uppercase">
           Starships
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row gap-10 items-center pt-10 pb-20">
+      <div className="flex flex-col md:flex-row gap-10 items-center pt-10 md:pb-20 pb-8">
         <img
           src={shipImage}
           alt={ship.name}
           className="w-2xl md:w-96 h-auto rounded-lg shadow-lg"
           onError={(e) => (e.target.src = errorImage)}
         />
-        <div className="bg-neutral-900/80 p-10 tracking-tight rounded-xl w-full max-w-2xl text-gray-200">
+        <div className="bg-neutral-900/80 p-4 md:p-10 tracking-tight rounded-xl w-full max-w-2xl text-gray-200">
           <h1 className="text-3xl font-semibold uppercase pb-2 mb-4">
             {ship.name}
           </h1>

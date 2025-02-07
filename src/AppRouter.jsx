@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./views/NotFound";
 import HomePage from "./views/HomePage";
-import Navbar from "/src/components/Navbar/Navbar";
 import ShipDetails from "./views/ShipDetails";
 import StarshipsPage from "./views/StarshipsPage";
+import Navbar from "/src/components/Navbar/Navbar";
 import ProtectedRoute from "./components/protected-route/ProtectedRoute";
 import AuthModal from "./components/AuthModal";
 import { useAuth } from "./context/Authentication/AuthContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/starships/:id" element={<ShipDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

@@ -17,9 +17,11 @@ const StarshipsPage = () => {
         ))}
       </div>
       {viewMore && (
-        <PrimaryButton onClick={() => setPage((prev) => prev + 1)}>
-          View More
-        </PrimaryButton>
+        <div className="flex justify-center">
+          <PrimaryButton onClick={() => setPage((prev) => prev + 1)}>
+            View More
+          </PrimaryButton>
+        </div>
       )}
       {loading && (
         <p className="text-white font-medium uppercase text-center">

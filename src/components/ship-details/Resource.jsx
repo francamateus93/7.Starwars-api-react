@@ -21,24 +21,24 @@ const Resource = ({ resourceUrls, title, getImageUrl, resourceKey }) => {
   }, [resourceUrls]);
 
   return (
-    <div className="text-gray-200 flex flex-col gap-2 items-center p-10">
-      <div className="border-y border-y-white/25 w-full lg:w-6xl mb-8 px-8 py-5">
-        <h1 className="text-3xl text-start tracking-tight font-medium uppercase">
+    <div className="text-gray-200 flex flex-col items-center p-5 md:p-10">
+      <div className="border-y border-y-white/25 w-full mb-8 px-4 py-5">
+        <h1 className="text-2xl md:text-3xl text-center tracking-tight font-medium uppercase">
           {title}
         </h1>
       </div>
-      <div className="flex gap-10 pt-10 pb-10">
+      <div className="flex flex-wrap justify-center gap-5 md:gap-10">
         {resources.map((resource) => (
           <div
             key={resource[resourceKey]}
-            className="text-center bg-neutral-900 rounded-lg pb-4"
+            className="bg-neutral-900 rounded-lg pb-4 shadow-lg"
           >
             <img
               src={getImageUrl(resource)}
               alt={resource[resourceKey]}
-              className="w-48 h-84 object-cover rounded-lg"
+              className="w-40 h-60 md:w-48 md:h-84 object-cover rounded-lg"
             />
-            <h3 className="w-48 text-center px-2 py-4 font-semibold">
+            <h3 className="w-40 text-center px-2 py-4 font-semibold">
               {resource[resourceKey]}
             </h3>
           </div>
