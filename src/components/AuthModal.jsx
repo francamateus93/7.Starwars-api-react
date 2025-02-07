@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Authentication/AuthContext";
 import Button from "./buttons/SecondaryButton";
-import IconImg from "../../public/Starwars-Darth-Vader.png";
+import Logo from "../assets/logo_stacked_2x-52b4f6d33087.png";
 
 const AuthModal = ({ type, onClose, user, onToggle }) => {
   const { login, signup } = useAuth();
@@ -36,17 +36,17 @@ const AuthModal = ({ type, onClose, user, onToggle }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
-      <div className="bg-neutral-900 text-white p-10 rounded-lg w-96 h-96 shadow-2xl relative flex flex-col justify-center">
+      <div className="bg-neutral-900 text-white p-10 rounded-lg w-96 h-fit shadow-2xl relative flex flex-col justify-center">
         <button
           className="absolute top-2 right-2 p-2 text-white"
           onClick={onClose}
         >
           ✖
         </button>
-        <div>
-          <div className="flex items-center gap-3 mb-8">
-            <img src={IconImg} alt="IconStar Wars" className="w-6" />
-            <h2 className="text-white font-bold tracking-tighter text-2xl">
+        <div className="text-center">
+          <div className="flex flex-col items-center justify-center gap-6 mb-8">
+            <img src={Logo} alt="Logo Star Wars" className="w-32 p-2" />
+            <h2 className="text-white uppercase tracking-tighter text-xl">
               {type === "login" ? "Log In" : "Sign Up"}
             </h2>
           </div>

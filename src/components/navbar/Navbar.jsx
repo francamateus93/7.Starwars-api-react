@@ -13,8 +13,8 @@ const Navbar = () => {
   const [modalType, setModalType] = useState(null);
 
   return (
-    <section className="bg-black">
-      <div className="flex items-center justify-between gap-2 p-4 mx-6">
+    <section>
+      <div className="flex items-center justify-between gap-2 p-4 mx-10">
         <div className="hidden md:flex md:items-center md:gap-4">
           <a
             href="https://www.instagram.com/starwars/"
