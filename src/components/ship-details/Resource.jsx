@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useFetch from "../../hooks/useFetch";
 
 const Resource = ({ resourceUrls, title, getImageUrl, resourceKey }) => {
-  const [resources, setResources] = useState([]);
-
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        const data = await Promise.all(
-          resourceUrls.map((url) => fetch(url).then((res) => res.json()))
-        );
-        setResources(data);
-      } catch (error) {
-        console.error(`Error fetching ${title.toLowerCase()}:`, error);
-      }
-    };
-
-    if (resourceUrls.length) {
-      fetchResources();
-    }
-  }, [resourceUrls]);
+  const { data: resources, loading, error } = useFetch(resourceUrls);
 
   return (
     <div className="text-gray-200 flex flex-col items-center p-5 md:p-10">
@@ -27,6 +11,12 @@ const Resource = ({ resourceUrls, title, getImageUrl, resourceKey }) => {
           {title}
         </h1>
       </div>
+
+      {loading && (
+        <p className="text-gray-400">Loading {title.toLowerCase()}...</p>
+      )}
+      {error && <p className="text-red-500">{error}</p>}
+
       <div className="flex flex-wrap justify-center gap-5 md:gap-10">
         {resources.map((resource) => (
           <div

@@ -1,34 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 import Button from "../components/buttons/SecondaryButton";
-import fetchShipDetails from "../api/ShipsDetailsApi";
-import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Pilots from "../components/ship-details/Pilots";
 import Films from "../components/ship-details/Films";
+import errorImage from "../assets/Starwars-visualguide-big-placeholder.jpg";
 
 const ShipDetails = () => {
   const { id } = useParams();
-  const [ship, setShip] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const shipUrl = `https://swapi.dev/api/starships/${id}/`;
+  const { data: ship, loading, error } = useFetch(shipUrl);
   const shipImage = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
-  useEffect(() => {
-    const getShipDetails = async () => {
-      try {
-        const data = await fetchShipDetails(id);
-        setShip((prevShip) => ({ ...prevShip, ...data }));
-      } catch (error) {
-        console.error("Error fetching ship details:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getShipDetails();
-  }, [id]);
-
-  if (loading) return <p>Loading details...</p>;
+  if (loading) return <p className="text-gray-400">Loading details...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   if (!ship) {
     return (
@@ -50,6 +36,7 @@ const ShipDetails = () => {
           Starships
         </h1>
       </div>
+
       <div className="flex flex-col md:flex-row gap-10 items-center pt-10 md:pb-20 pb-8">
         <img
           src={shipImage}
@@ -63,8 +50,7 @@ const ShipDetails = () => {
           </h1>
           <p className="mb-6">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s.
+            industry.
           </p>
           <div className="flex gap-4">
             <div className="flex flex-col gap-2 font-bold">
@@ -85,7 +71,7 @@ const ShipDetails = () => {
                 Length: <span className="font-normal">{ship.length}</span>
               </p>
               <p>
-                Atmospheric Speed:{" "}
+                Speed:{" "}
                 <span className="font-normal">
                   {ship.max_atmosphering_speed}
                 </span>
@@ -97,16 +83,10 @@ const ShipDetails = () => {
           </div>
         </div>
       </div>
-      {ship.pilots && ship.pilots.length > 0 ? (
-        <Pilots pilotsUrl={ship.pilots} />
-      ) : (
-        ""
-      )}
-      {ship.films && ship.films.length > 0 ? (
-        <Films filmsUrl={ship.films} />
-      ) : (
-        ""
-      )}
+
+      {ship.pilots?.length > 0 && <Pilots pilotsUrl={ship.pilots} />}
+      {ship.films?.length > 0 && <Films filmsUrl={ship.films} />}
+
       <Link to="/starships" className="md:mt-8">
         <PrimaryButton>Back to Starships</PrimaryButton>
       </Link>
