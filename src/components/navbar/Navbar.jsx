@@ -76,7 +76,6 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <PrimaryButton
                 onClick={() => {
-                  // console.log("Opening login modal");
                   setModalType("login");
                 }}
               >
@@ -85,7 +84,6 @@ const Navbar = () => {
               <span className="text-sm text-gray-600">//</span>
               <PrimaryButton
                 onClick={() => {
-                  // console.log("Opening signup modal");
                   setModalType("signup");
                 }}
               >
@@ -106,7 +104,10 @@ const Navbar = () => {
       )}
 
       {/* NAVIGATION */}
-      <Navigation />
+      <Navigation
+        setModalType={setModalType}
+        setShowModal={() => setModalType("login")}
+      />
     </section>
   );
 };

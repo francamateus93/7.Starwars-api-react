@@ -9,14 +9,15 @@ const AuthModal = ({ type, onClose, user, onToggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (user) {
       onClose();
-      navigate(location.state?.from?.pathname || "/"), { replace: true };
+      navigate(location.state?.from?.pathname || "/starships", {
+        replace: true,
+      });
     }
   }, [user, onClose, location, navigate]);
 
@@ -30,7 +31,11 @@ const AuthModal = ({ type, onClose, user, onToggle }) => {
       }
       onClose();
     } catch (error) {
-      setError(error.message);
+      if (error.message.includes("auth/wrong-password")) {
+        setError("Incorrect password. Try again.");
+      } else {
+        setError("Please, check your details and try again.");
+      }
     }
   };
 
@@ -46,7 +51,7 @@ const AuthModal = ({ type, onClose, user, onToggle }) => {
         <div className="text-center">
           <div className="flex flex-col items-center justify-center gap-6 mb-8">
             <img src={Logo} alt="Logo Star Wars" className="w-32 p-2" />
-            <h2 className="text-white uppercase tracking-tighter text-xl">
+            <h2 className="text-white uppercase tracking-tighter text-2xl">
               {type === "login" ? "Log In" : "Sign Up"}
             </h2>
           </div>

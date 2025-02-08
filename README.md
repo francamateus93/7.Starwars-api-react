@@ -1,6 +1,6 @@
 # Star Wars API React Project
 
-This project is a web application that interacts with the Star Wars API to provide detailed information about starships, their pilots, and the films in which they appear. It uses React for building the user interface and follows design principles such as SOLID and Clean Code to ensure maintainable and scalable code.
+This project is a web application that interacts with the Star Wars API to provide detailed information about starships, their pilots, and the films in which they appear. It uses React for building the user interface and follow design principles such as SOLID to ensure maintainable and scalable code.
 
 📄 Main Features:
 
@@ -13,8 +13,8 @@ This project is a web application that interacts with the Star Wars API to provi
 ## 💻 Technologies
 
 - React: Main library for building the user interface.
-- React Router: For navigation between different views in the application.
-- Custom Hooks: Implemented to handle API calls and manage loading and error states, promoting code reuse and separation of concerns.
+  - React Router: For navigation between different views in the application.
+  - Custom Hooks: Implemented to handle API calls and manage loading and error states, promoting code reuse and separation of concerns.
 - Tailwind CSS: Used for styling and UI design, enabling fast and efficient customization.
 - JavaScript: Core programming language used.
 - HTML5 y CSS3: For the basic structure and layout.
@@ -53,23 +53,14 @@ Start the server
   npm run dev / npm run start
 ```
 
-## 📝 Best Practices and Benefits
-
-- Clean and Maintainable Code: The SOLID and Clean Code principles were followed to ensure that the code is easy to understand, maintain, and scale.
-
-- Centralized Hooks: Custom hooks were centralized in a single file, improving code organization and making them reusable across different components.
-
 ## 📘 Documentation
 
-- [React Router - Index Routes](https://reactrouter.com/start/library/routing#index-routes)
 - [SWAPI - The Star Wars API](https://swapi.dev/)
-- [Implementando Redux Toolkit en React](https://medium.com/@diego.coder/implementando-redux-en-react-js-redux-toolkit-86b82219584a)
+- [React Router - Index Routes](https://reactrouter.com/start/library/routing#index-routes)
+- [Contextos en React.js (Hook useContext)](https://medium.com/@diego.coder/contextos-en-react-js-hook-usecontext-440b948226e6)
+- [Estados globales complejos en React.js](https://medium.com/@diego.coder/estados-globales-complejos-en-react-js-hook-usereducer-620e90f75d1b)
 - [Project Structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md)
 
-## 🤝 Contributions
-
-Contributions are welcome!
-
-## Support
+## 🤝 Support
 
 A student project created at IT Academy, in the FrontEnd Angular/React course at Barcelona Activa.

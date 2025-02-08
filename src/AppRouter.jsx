@@ -13,10 +13,11 @@ import Footer from "./components/Footer";
 const App = () => {
   const { user } = useAuth();
   const [modalType, setModalType] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <BrowserRouter>
-      <Navbar setModalType={setModalType} />
+      <Navbar setModalType={setModalType} setShowModal={setShowModal} />
       {modalType && (
         <AuthModal
           type={modalType}
@@ -30,12 +31,27 @@ const App = () => {
         <Route
           path="/starships"
           element={
-            <ProtectedRoute user={user} setModalType={setModalType}>
+            <ProtectedRoute
+              user={user}
+              setModalType={setModalType}
+              setShowModal={setShowModal}
+            >
               <StarshipsPage />
             </ProtectedRoute>
           }
         />
-        <Route path="/starships/:id" element={<ShipDetails />} />
+        <Route
+          path="/starships/:id"
+          element={
+            <ProtectedRoute
+              user={user}
+              setModalType={setModalType}
+              setShowModal={setShowModal}
+            >
+              <ShipDetails />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

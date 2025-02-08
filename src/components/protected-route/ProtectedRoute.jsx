@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
-import { useLocation, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({ user, children, setModalType }) => {
-  const location = useLocation();
+const ProtectedRoute = ({ user, children, setModalType, setShowModal }) => {
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
       setModalType("login");
+      setShowModal(true);
+      navigate("/");
     }
-  }, [user, setModalType]);
+  }, [user, setModalType, setShowModal]);
 
-  if (!user) {
-    return <Navigate to="/starships" state={{ from: location }} replace />;
-  }
-  return children;
+  return user ? children : null;
 };
 
 export default ProtectedRoute;
